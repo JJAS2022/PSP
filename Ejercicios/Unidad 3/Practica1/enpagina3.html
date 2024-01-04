@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Node.js - Requests and Responses</title>
+</head>
+<body>
+    <header>
+        <a href="./enindex.html">
+            <img src="https://nodejs.org/static/images/logos/nodejs-new-pantone-black.svg" alt="Node.js Logo" class="logo">
+        </a>
+        <h1 class="title">Node.js for beginners</h1>
+    </header>
+
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="enpagina1.html">Usage and Development</a></li>
+                <li><a href="enpagina2.html">Creating a Web Server</a></li>
+                <li><a href="enpagina3.html">Requests and Responses</a></li>
+                <li><a href="enpagina4.html">File Reading</a></li>
+            </ul>
+        </nav>
+
+        <div class="body-content">
+            <h2>Requests and Responses of the Web Server</h2>
+            <img src="https://cdn1.slideserve.com/3523512/http-request-n.jpg" alt="HTTP Request Diagram" class="logo1">
+            
+            <h3>Obtaining Data from Request and Response</h3>
+            <p>
+                In the <code>requestListener</code> function, the parameters <code>request</code> and <code>response</code> are crucial for interacting with the client's request and sending the appropriate response. Here, we delve into obtaining data from the request and manipulating it.
+            </p>
+            <pre><code>
+                const requestListener = function (request, response) {
+                    // Example of obtaining the requested URL
+                    const url = request.url;
+                    console.log(`Request received for: ${url}`);
+
+                    // Other data available in the request object
+                    const method = request.method; // Request method (GET, POST, etc.)
+                    const headers = request.headers; // Request headers
+                    const urlParams = new URLSearchParams(request.url.split('?')[1]); // URL parameters
+
+                    // Example of accessing URL parameters
+                    const username = urlParams.get('user');
+                    console.log(`Username in the URL: ${username}`);
+
+                    // Manipulating the response
+                    response.writeHead(200, { 'Content-Type': 'text/plain' }); // Configuring response headers
+
+                    // Sending data in the response
+                    response.write('Hello, world!');
+                    response.end(); // Ending the response
+
+                    // Note: response.end() is essential to indicate that the response has been completed
+                };
+            </code></pre>
+            <p>
+                In this example, in addition to obtaining the requested URL, we have explored other aspects of the request. The request method (<code>request.method</code>) indicates the type of request (GET, POST, etc.). The request headers (<code>request.headers</code>) contain additional information about the request, such as the content type accepted by the client.
+            </p>
+            <p>
+                Additionally, we have demonstrated how to access and use URL parameters using <code>URLSearchParams</code>. These are useful for extracting specific data from the URL, such as usernames or other relevant parameters.
+            </p>
+            <p>
+                Finally, we have shown how to manipulate the response using <code>response.writeHead()</code> to configure response headers and <code>response.write()</code> to send data. It is crucial to end the response with <code>response.end()</code> to indicate that the response has been completed.
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; Javier Aliño. 2024</p>
+    </footer>
+</body>
+</html>

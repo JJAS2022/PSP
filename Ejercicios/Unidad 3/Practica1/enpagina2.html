@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Node.js - Creating a Web Server</title>
+</head>
+<body>
+    <header>
+        <a href="./enindex.html">
+            <img src="https://nodejs.org/static/images/logos/nodejs-new-pantone-black.svg" alt="Node.js Logo" class="logo">
+        </a>
+        <h1 class="title">Node.js for beginners</h1>
+    </header>
+
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="enpagina1.html">Usage and Development</a></li>
+                <li><a href="enpagina2.html">Creating a Web Server</a></li>
+                <li><a href="enpagina3.html">Requests and Responses</a></li>
+                <li><a href="enpagina4.html">File Reading</a></li>
+            </ul>
+        </nav>
+
+        <div class="body-content">
+            <h2>Creating a Web Server with Node.js</h2>
+            <img src="https://usuarioperu.com/wp-content/uploads/2016/12/Nodejs-2.png" alt="Creating a server with Node.js" class="logo1">
+            <p>
+                Node.js makes it easy to create web servers. Below, we explain step by step how to create a basic server using essential modules.
+            </p>
+
+            <h3>Importing Modules</h3>
+            <p>
+                In Node.js, modules are essential building blocks. To create a server, we need to import some key modules, such as <code>http</code>,
+                <code>fs</code>, and <code>path</code>, as well as possibly custom modules we've created for personalized functions.
+            </p>
+
+            <h3>Creating a Server</h3>
+            <p>
+                The main function to create a server in Node.js is <code>createServer()</code>. This function takes a <code>requestListener</code>
+                as a parameter, a function that will be executed each time the server receives a request. We will use the <code>request</code>
+                and <code>response</code> objects to handle the request and send the response.
+            </p>
+
+            <pre><code>
+                const http = require('http');
+
+                const requestListener = function (request, response) {
+                    // Handle request and response here
+                };
+
+                const server = http.createServer(requestListener);
+            </code></pre>
+
+            <p>
+                After creating the server, we need to tell it to listen on a specific port using the <code>listen()</code> function. This function
+                can take a port number as a parameter.
+            </p>
+
+            <pre><code>
+                const port = 80;
+                server.listen(port, () => {
+                    console.log(`The server is listening on port ${port}`);
+                });
+            </code></pre>
+        </div>
+
+        <footer>
+            <p>&copy; Javier Aliño. 2024</p>
+        </footer>
+    </div>
+</body>
+</html>

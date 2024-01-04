@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Node.js - File Reading</title>
+</head>
+<body>
+    <header>
+        <a href="./enindex.html">
+            <img src="https://nodejs.org/static/images/logos/nodejs-new-pantone-black.svg" alt="Node.js Logo" class="logo">
+        </a>
+        <h1 class="title">Node.js for beginners</h1>
+    </header>
+
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="enpagina1.html">Usage and Development</a></li>
+                <li><a href="enpagina2.html">Creating a Web Server</a></li>
+                <li><a href="enpagina3.html">Requests and Responses</a></li>
+                <li><a href="enpagina4.html">File Reading</a></li>
+            </ul>
+        </nav>
+
+        <div class="body-content">
+            <h2>File Reading in the Web Server</h2>
+            <img src="https://www.tutorialkart.com/wp-content/uploads/2017/09/node-fs.png" alt="fs Module in Node.js" class="logo1">
+            
+            <h3>Reading Files with the fs Module</h3>
+            <p>
+                In Node.js, the <code>fs</code> (file system) module is essential for performing read and write operations on the system's files. The main function for reading files is <code>readFile()</code>, which takes parameters such as the file name, encoding (optional), and a callback function that will handle the read data.
+            </p>
+            <pre><code>
+            const fs = require('fs');
+
+            // Example of reading an HTML file with 'utf8' encoding
+            fs.readFile('file.html', 'utf8', (err, data) => {
+                if (err) {
+                    // If there is an error reading the file, print the error to the console
+                    console.error(err);
+                    return;
+                }
+                // Print the content of the file to the console
+                console.log('File content:', data);
+            });
+            </code></pre>
+            <p>
+                In this example, the 'file.html' file is read with the 'utf8' encoding, which is common for text files. The third parameter of <code>readFile()</code> is a callback function that will be executed once the file reading is complete. This function receives two parameters: <code>err</code> to handle potential errors and <code>data</code> containing the content of the read file.
+            </p>
+            <p>
+                Handling errors correctly is important to ensure that the application does not unexpectedly fail in case of issues during the file reading. On the other hand, by combining file reading with the ability to send this data as a response, we can build dynamic web applications that serve specific content from the server to the client.
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; Javier Aliño. 2024</p>
+    </footer>
+</body>
+</html>

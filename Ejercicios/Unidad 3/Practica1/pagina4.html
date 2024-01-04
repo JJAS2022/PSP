@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Node.js - Lectura de ficheros</title>
+</head>
+<body>
+    <header>
+        <a href="./index.html">
+            <img src="https://nodejs.org/static/images/logos/nodejs-new-pantone-black.svg" alt="Logo de Node.js" class="logo">
+        </a>
+        <h1 class="title">Node.js para principiantes</h1>
+    </header>
+
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="pagina1.html">Uso y desarollo</a></li>
+                <li><a href="pagina2.html">Creación de un servidor web</a></li>
+                <li><a href="pagina3.html">Peticiones y respuestas</a></li>
+                <li><a href="pagina4.html">Lectura de ficheros</a></li>
+            </ul>
+        </nav>
+
+        <div class="body-content">
+            <h2>Lectura de ficheros del Servidor Web</h2>
+            <img src="https://www.tutorialkart.com/wp-content/uploads/2017/09/node-fs.png" alt="Módulo fs en Node.js" class="logo1">
+            
+            <h3>Lectura de Archivos con el Módulo fs</h3>
+            <p>
+                En Node.js, el módulo <code>fs</code> (sistema de archivos) es esencial para realizar operaciones de lectura y escritura en archivos del sistema. La función principal para leer archivos es <code>readFile()</code>, que toma como parámetros el nombre del archivo, la codificación (opcional) y una función de devolución de llamada que manejará los datos leídos.
+            </p>
+            <pre><code>
+            const fs = require('fs');
+
+            // Ejemplo de lectura de un archivo HTML con codificación 'utf8'
+            fs.readFile('archivo.html', 'utf8', (err, data) => {
+                if (err) {
+                    // Si hay un error al leer el archivo, imprime el error en la consola
+                    console.error(err);
+                    return;
+                }
+                // Imprime el contenido del archivo en la consola
+                console.log('Contenido del archivo:', data);
+            });
+            </code></pre>
+            <p>
+                En este ejemplo, el archivo 'archivo.html' se lee con la codificación 'utf8', que es común para archivos de texto. El tercer parámetro de <code>readFile()</code> es una función de devolución de llamada que se ejecutará una vez que la lectura del archivo esté completa. Esta función recibe dos parámetros: <code>err</code> para manejar posibles errores y <code>data</code> que contiene el contenido del archivo leído.
+            </p>
+            <p>
+                Es importante manejar los errores correctamente para garantizar que la aplicación no falle inesperadamente en caso de problemas durante la lectura del archivo. Por otro lado, al combinar la lectura de archivos con la capacidad de enviar estos datos como respuesta, podemos construir aplicaciones web dinámicas que sirven contenido específico desde el servidor hacia el cliente.
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; Javier Aliño. 2024</p>
+    </footer>
+</body>
+</html>

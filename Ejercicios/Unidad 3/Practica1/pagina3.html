@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Node.js - Peticion y respuestas</title>
+</head>
+<body>
+    <header>
+        <a href="./index.html">
+            <img src="https://nodejs.org/static/images/logos/nodejs-new-pantone-black.svg" alt="Logo de Node.js" class="logo">
+        </a>
+        <h1 class="title">Node.js para principiantes</h1>
+    </header>
+
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="pagina1.html">Uso y desarollo</a></li>
+                <li><a href="pagina2.html">Creación de un servidor web</a></li>
+                <li><a href="pagina3.html">Peticiones y respuestas</a></li>
+                <li><a href="pagina4.html">Lectura de ficheros</a></li>
+            </ul>
+        </nav>
+
+        <div class="body-content">
+            <h2>Peticiones y respuestas del Servidor Web</h2>
+            <img src="https://cdn1.slideserve.com/3523512/http-request-n.jpg" alt="Esquema de una petición HTTP" class="logo1">
+            
+            <h3>Obtención de Datos de la Petición y Respuesta</h3>
+            <p>
+                En la función <code>requestListener</code>, los parámetros <code>request</code> y <code>response</code> son fundamentales para interactuar con la solicitud del cliente y enviar la respuesta correspondiente. Aquí, profundizaremos en la obtención de datos de la petición y su manipulación.
+            </p>
+            <pre><code>
+                const requestListener = function (request, response) {
+                // Ejemplo de obtención de la URL solicitada
+                const url = request.url;
+                console.log(`Solicitud recibida para: ${url}`);
+
+                // Otros datos disponibles en el objeto request
+                const metodo = request.method; // Método de la solicitud (GET, POST, etc.)
+                const encabezados = request.headers; // Encabezados de la solicitud
+                const parametrosURL = new URLSearchParams(request.url.split('?')[1]); // Parámetros de la URL
+
+                // Ejemplo de acceso a los parámetros de la URL
+                const nombreUsuario = parametrosURL.get('usuario');
+                console.log(`Nombre de usuario en la URL: ${nombreUsuario}`);
+
+                // Manipulación de la respuesta
+                response.writeHead(200, { 'Content-Type': 'text/plain' }); // Configura los encabezados de la respuesta
+
+                // Envío de datos en la respuesta
+                response.write('¡Hola, mundo!');
+                response.end(); // Finaliza la respuesta
+
+                // Nota: response.end() es esencial para indicar que la respuesta ha sido completada
+                };
+            </code></pre>
+            <p>
+                En este ejemplo, además de obtener la URL solicitada, hemos explorado otros aspectos de la solicitud. El método de la solicitud (<code>request.method</code>) nos indica el tipo de solicitud (GET, POST, etc.). Los encabezados de la solicitud (<code>request.headers</code>) contienen información adicional sobre la solicitud, como el tipo de contenido aceptado por el cliente.
+            </p>
+            <p>
+                Además, hemos demostrado cómo acceder y utilizar parámetros de la URL utilizando <code>URLSearchParams</code>. Estos son útiles para extraer datos específicos de la URL, como nombres de usuario u otros parámetros relevantes.
+            </p>
+            <p>
+                Finalmente, hemos mostrado cómo manipular la respuesta utilizando <code>response.writeHead()</code> para configurar los encabezados de la respuesta y <code>response.write()</code> para enviar datos. Es crucial finalizar la respuesta con <code>response.end()</code> para indicar que la respuesta ha sido completada.
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; Javier Aliño. 2024</p>
+    </footer>
+</body>
+</html>
